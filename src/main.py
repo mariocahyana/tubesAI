@@ -30,7 +30,7 @@ class Main:
     def opening_screen(self):
         screen = self.screen
         while True:
-            bg = pygame.image.load("images/gui/bg.png")
+            bg = pygame.image.load("images/gui/bg1.png")
             bg_rect = bg.get_rect(center=(WIDTH // 2, HEIGHT // 2))
             screen.blit(bg, bg_rect)
 

@@ -13,6 +13,7 @@ class Board:
         self.last_squares = []
 
         self._create()
+        self.update_board_colors('#4eecc8', '#11ae8a')
         self._add_pieces_fen(START_FEN)
 
     def _create(self):  # private methods
@@ -98,6 +99,18 @@ class Board:
                     king = King(color)
                     squares[row][col].change_piece(king)
                 col += 1
+                
+    def update_board_colors(self, color1, color2):
+        """
+        Mengganti warna papan catur.
+        :param color1: Warna untuk kotak putih (lightblue)
+        :param color2: Warna untuk kotak hitam (darkblue)
+        """
+        
+        for row in range (ROWS):
+            for col in range(COLS):
+                color = color1 if (row + col) % 2 == 0 else color2
+                self.squares[row][col].set_color(color)
 
     # ============================= Moving methods ===============================
 

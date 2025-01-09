@@ -3,16 +3,23 @@ from constants import *
 
 class Square:
 
-    def __init__(self, row, col, piece=None):  # piece
+    def __init__(self, row, col, piece=None, color=None):  # piece
         self.row = row
         self.col = col
         self.piece = piece
-        self.org_color = COLORS[(row + col) % 2]
-        self.color = self.org_color
+        # self.org_color = COLORS[(row + col) % 2]
+        # self.color = self.org_color
+        self.color = color or self.default_color()
         self.possible = False
 
         self.seen_by_w = False
         self.seen_by_b = False
+        
+    def default_color(self):
+        return 'white' if (self.row + self.col) % 2 == 0 else 'black'
+    
+    def set_color (self, color):
+        self.color = color
 
     def change_piece(self, piece):
         self.piece = piece
