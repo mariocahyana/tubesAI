@@ -67,11 +67,17 @@ class GUI:
     @staticmethod
     def draw_game_over(surface):
         # game over
-        path = os.path.join(f'images/gui/checkmate_s.png')
+        path = os.path.join('images', 'gui', 'checkmates.jpg')
         image = pygame.image.load(path)
+
+        new_width = image.get_width() // 2
+        new_height = image.get_height() // 2
+        resized_image = pygame.transform.scale(image, (new_width, new_height))
+
         center_img = WIDTH // 2, int(0.46 * HEIGHT)
-        img_frame = image.get_rect(center=center_img)
-        surface.blit(image, img_frame)
+        img_frame = resized_image.get_rect(center=center_img)
+
+        surface.blit(resized_image, img_frame)
 
         # restart
         path = os.path.join(f'images/gui/restart.png')
